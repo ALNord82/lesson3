@@ -59,7 +59,7 @@ function count_charts($str, $x = false)
 }
 
 $str = "beverly beaver who is brown with a blue belly goes to a birthday party with her pal bob the buffalo";
-print_r(count_charts($str, 'b'));
+echo count_charts($str, 'b');
 
 echo '<br>';
 //Создать функцию которая считает сумму значений всех элементов массива произвольной глубины
@@ -77,7 +77,7 @@ $firstArr2 = [
     ],
     'foure' => 5,
     'five' => [
-        'three' => 32,
+        'three' => 31,
         'foure' => 5,
         'five' => 12,
         'six' =>[1,'seven'=>[1,1]]
@@ -85,8 +85,8 @@ $firstArr2 = [
 ];
 function array_multisum1(array $arr): float {
     $sum = array_sum($arr);
-    print_r($sum);
-    echo '<br>';
+    //print_r($sum);
+    //echo '<br>';
     foreach($arr as $ch) {
         if (is_array($ch))  {
             $sum += array_multisum1($ch);
