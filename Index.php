@@ -85,18 +85,36 @@ $firstArr = [
         'five' => 12,
     ],
 ];
+ function walk_recursive(array $arr) 
+ {
+     $i=0;
+     foreach ($arr as $value) {
+         if (is_array($value)) {
+             walk_recursive($value);
+         }
+         elseif ($i===1){
+            print_r($value);
+            print_r(" ");
+         }
 
-echo $firstArr['two']['seven'].'<br>';
-echo $firstArr['three']['two'].'<br>';
-echo $firstArr['five']['foure'].'<br>';
-var_dump(count($firstArr, COUNT_RECURSIVE));
-echo '<br>';
-function array_multisum(array $arr): float {
-    $sum = array_sum($arr);
-    foreach($arr as $child) {
-        $sum += is_array($child) ? array_multisum($child) : 0;
-    }
-    return $sum;
-};
-echo array_multisum($firstArr).'<br>';
+     $i=$i+1;
+     }
+ }
+
+walk_recursive($firstArr);
+
+
+//echo $firstArr['two']['seven'].'<br>';
+//echo $firstArr['three']['two'].'<br>';
+//echo $firstArr['five']['foure'].'<br>';
+//var_dump(count($firstArr, COUNT_RECURSIVE));
+//echo '<br>';
+//function array_multisum(array $arr): float {
+//    $sum = array_sum($arr);
+ //   foreach($arr as $child) {
+ //       $sum += is_array($child) ? array_multisum($child) : 0;
+ //   }
+ //   return $sum;
+//};
+//echo array_multisum($firstArr).'<br>';
 

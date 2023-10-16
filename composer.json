@@ -1,0 +1,23 @@
+{
+    "name": "usalexar/lessons",
+    "description": "my_test",
+    "type": "project",
+    "license": "mit",
+    "autoload": {
+        "psr-4": {
+            "src\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Alexa"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {},
+    "config": {
+        "optimize-autoloader": true,
+        "preferred-install": "dist",
+        "sort-packages": true
+    }
+}
