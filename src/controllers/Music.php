@@ -4,9 +4,10 @@ namespace src\controllers;
 
 use src\core\Viewer;
 
-class About
+class Music
 {
     public function index()
     {
-        Viewer::view("About");
-}}
+        Viewer::view("Music");
+    }
+}

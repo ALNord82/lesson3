@@ -2,9 +2,15 @@
 
 namespace src\controllers;
 
+use src\core\Viewer;
+use src\models\Users;
+
 class Home
 {
     public function index()
     {
-        print_r("I`am Home");
-}}
+     $obj=new Users();
+     $data['data']=$obj->findAll(); ;
+     Viewer::view("Home", $data);
+}
+}

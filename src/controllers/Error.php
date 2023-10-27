@@ -2,9 +2,11 @@
 
 namespace src\controllers;
 
+use src\core\Viewer;
+
 class Error
 {
     public function index()
     {
-        print_r("404");
+        Viewer::view("Error");
     }}

@@ -1,22 +1,7 @@
 <?php
 include "vendor\autoload.php";
+use src\core\Router;
 
-$URL = $_SERVER['REQUEST_URI'];
+$obj=new Router();
+$obj->run();
 
-$classPatch = 'src\controllers\\' ;
-
-if($URL !== "/")
-{
-    $path = $classPatch . substr($URL, 1);
-}
-else
-{
-    $path = $classPatch . "home";
-}
-if (!class_exists($path))
-{
-    $path = $classPatch . "error";
-}
-
-$obj = new $path();
-$obj->index();
