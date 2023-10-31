@@ -3,10 +3,12 @@
 namespace src\controllers;
 
 use src\core\Viewer;
+use src\models\Err;
 
 class Error
 {
     public function index()
     {
-        Viewer::view("Error");
+        $data=Err::$ico;
+        Viewer::view("Error", $data);;
     }}
