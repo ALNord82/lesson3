@@ -3,7 +3,7 @@
     <tr>
 
     </tr>
-    <?php //var_dump($data);?>
+    <?php var_dump($data);?>
     <?php foreach ($data as $row) : ?>
         <tr>
             <td><?php echo '<pre>'; print_r($row); echo '</pre>'; ?></td>

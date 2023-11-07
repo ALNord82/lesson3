@@ -1,7 +1,7 @@
 <?php
 
 namespace src\core;
-
+use src\controllers\Error;
 final class Router
 {
 
@@ -12,9 +12,9 @@ final class Router
 
         $classPatch = 'src\controllers\\' ;
 
-        if($URL !== "/")
-        {
-            $path = $classPatch . ucfirst(substr($URL, 1));
+        if($URL !== "/") {
+            $url_parts=explode('/', substr($URL,1 ));
+            $path = $classPatch . ucfirst($url_parts[0]);
         }
         else
         {
@@ -25,6 +25,12 @@ final class Router
             $path = $classPatch . "error";
         }
         $obj = new $path();
-        $obj -> index();
+        if(isset($url_parts[1]) && method_exists($obj, $url_parts[1])) {
+            $method_name=$url_parts[1];
+            $obj->$method_name();
+        } else{
+            $obj -> index();
+        }
+
     }
 }
