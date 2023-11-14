@@ -3,7 +3,10 @@
 namespace src\models;
 use \PDO;
 use src\orm\Connector;
+use src\orm\Delete;
 use src\orm\Insert;
+use src\orm\Update;
+use src\orm\Where;
 
 class Connect
 {
@@ -21,6 +24,14 @@ class Connect
         //print_r($result);
         return [$result];
     }
+    public function findOne(int $id): array
+    {
+        $connect = new Connector();
+        $b = $connect->connects()->query('SELECT * FROM oc_banner WHERE banner_id=' . $id, PDO::FETCH_ASSOC);
+        $b->execute();
+        $result = $b->fetchAll();
+        return [$result];
+    }
 
     public function insert(array $data): bool
     {
@@ -33,21 +44,26 @@ class Connect
         }
         return false;
     }
-}
+    public function update(array $data, $condition): bool
+    {
+        try {
+            $update = new Update();
+            return $update->exec($data, $this->table_name, Where::andWhere([['banner_id', $condition, '=']]));
+        } catch (\Exception $e) {
+            var_dump('Error in update Users model');
+            var_dump($e->getMessage());
+        }
+        return false;
+    }
 
-//        $columns=$values=[];
-//        foreach ($data as $key=>$value)
-//        {
-//            $columns[]=$key;
-//            $values[]=$value;
-//        }
-//        if(!empty($columns)){
-//            $b="INSERT INTO Users (" . implode(',' , $columns) . ") VALUES (" . $this->prepare_values($values) .  ")";
-//            $obj=new Connector();
-//            $obj->connects()->exec($b);
-//            return true;
-//
-//        }
-//        return false;
-//    }
-//    }
+    public function delete($condition): bool
+    {
+        try {
+            $delete = new Delete();
+            return $delete->exec($this->table_name, Where::andWhere([['banner_id', $condition, '=']]));
+        } catch (\Exception $e) {
+            var_dump('Error in delete Users model');
+            var_dump($e->getMessage());
+        }
+    }
+}

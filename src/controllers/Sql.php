@@ -4,6 +4,7 @@ namespace src\controllers;
 
 use src\core\Viewer;
 use src\models\Connect;
+use src\models\Gal;
 
 class Sql
 {
@@ -24,10 +25,25 @@ class Sql
     }
     public function update()
     {
-        Viewer::view("Sql/update");
+        $data = [];
+        if (!empty($_GET['id'])) {
+            $obj = new Connect();
+            $data = $obj->findOne($_GET['id']);
+        }
+        if (!empty($_POST)) {
+            $obj = new Connect();
+            $obj->update(array_filter($_POST), $_GET['id']);
+        }
+        Viewer::view("Sql/update", $data);
     }
     public function delete()
     {
-        echo "delete";
+        {
+            if (!empty($_GET['id'])) {
+                $obj = new Connect();
+                $obj->delete($_GET['id']);
+            }
+            header('Location:/Sql');
+        }
     }
 }
