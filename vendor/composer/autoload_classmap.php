@@ -18,4 +18,7 @@ return array(
     'src\\models\\Err' => $baseDir . '/src/models/Err.php',
     'src\\models\\Gal' => $baseDir . '/src/models/Gal.php',
     'src\\models\\Users' => $baseDir . '/src/models/Users.php',
+    'src\\orm\\Connector' => $baseDir . '/src/orm/Connector.php',
+    'src\\orm\\Insert' => $baseDir . '/src/orm/Insert.php',
+    'src\\orm\\Update' => $baseDir . '/src/orm/Update.php',
 );

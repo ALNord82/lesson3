@@ -8,11 +8,10 @@ final class Router
 
     public function run()
     {
-        $URL = $_SERVER['REQUEST_URI'];
-
+        $URL = $_SERVER['REDIRECT_URL'];
         $classPatch = 'src\controllers\\' ;
 
-        if($URL !== "/") {
+        if($URL !== NULL) {
             $url_parts=explode('/', substr($URL,1 ));
             $path = $classPatch . ucfirst($url_parts[0]);
         }

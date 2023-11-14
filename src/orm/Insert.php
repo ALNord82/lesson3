@@ -20,7 +20,7 @@ class Insert
             $values[]=$value;
         }
         $b = $this->build_sql(implode(',' , $columns), $this->prepare_values($values), $table_name);
-        var_dump($b);
+        //var_dump($b);
         return $this->connector->connects()->exec($b);
     }
 
